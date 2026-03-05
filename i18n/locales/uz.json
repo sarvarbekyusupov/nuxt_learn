@@ -1,0 +1,83 @@
+{
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "or": "yoki",
+    "submit": "Yuborish",
+    "welcome": "Xush kelibsiz",
+    "welcomeSubtitle": "Hisobingizga kiring yoki yangisini yarating",
+    "error404": {
+      "title": "Sahifa topilmadi",
+      "subtitle": "Siz qidirayotgan sahifa mavjud emas yoki ko'chirilgan.",
+      "backHome": "Bosh sahifaga qaytish",
+      "login": "Kirish"
+    }
+  },
+  "auth": {
+    "brand": "DanAds",
+    "tagline": "Biz bilan sayohatingizni boshlang",
+    "signIn": "Tizimga kirish",
+    "signUp": "Hisob yaratish",
+    "forgotPassword": "Parolni tiklash",
+    "forgotPasswordSubtitle": "E-mail manzilingizni kiriting va biz sizga tiklash havolasini yuboramiz.",
+    "rememberMe": "Meni eslab qol",
+    "forgotPasswordLink": "Unutdingizmi?",
+    "continueWithGoogle": "Google bilan davom etish",
+    "noAccount": "Hisob yo'qmi?",
+    "signUpLink": "Ro'yxatdan o'tish",
+    "haveAccount": "Allaqachon hisobingiz bormi?",
+    "signInLink": "Tizimga kirish",
+    "rememberPassword": "Parolingizni eslaysizmi?",
+    "signInLinkForgot": "Tizimga kirish",
+    "fields": {
+      "email": "E-mail",
+      "emailPlaceholder": "siz{'@'}example.com",
+      "password": "Parol",
+      "passwordPlaceholder": "••••••••",
+      "fullName": "To'liq ism",
+      "fullNamePlaceholder": "John Doe",
+      "confirmPassword": "Parolni tasdiqlash",
+      "confirmPasswordPlaceholder": "••••••••"
+    },
+    "validation": {
+      "email": {
+        "required": "E-mail talab qilinadi",
+        "invalid": "Iltimos, to'g'ri e-mail manzilini kiriting",
+        "tooLong": "E-mail 255 belgidan ko'p bo'lishi mumkin emas"
+      },
+      "password": {
+        "required": "Parol talab qilinadi",
+        "tooShort": "Parol kamida 8 ta belgidan iborat bo'lishi kerak",
+        "tooLong": "Parol 128 belgidan ko'p bo'lishi mumkin emas",
+        "uppercase": "Kamida bitta katta harf bo'lishi kerak",
+        "lowercase": "Kamida bitta kichik harf bo'lishi kerak",
+        "number": "Kamida bitta raqam bo'lishi kerak",
+        "special": "Kamida bitta maxsus belgi bo'lishi kerak"
+      },
+      "name": {
+        "required": "Ism talab qilinadi",
+        "tooShort": "Ism kamida 2 ta belgidan iborat bo'lishi kerak",
+        "tooLong": "Ism 100 belgidan ko'p bo'lishi mumkin emas",
+        "invalidChars": "Ism faqat harflar, bo'shliqlar, chiziqlar va apostroflardan iborat bo'lishi mumkin"
+      },
+      "confirmPassword": {
+        "required": "Iltimos, parolingizni tasdiqlang",
+        "noMatch": "Parollar mos kelmaydi"
+      }
+    },
+    "passwordHint": "Kamida 8 ta belgi, katta harf, kichik harf, raqam va maxsus belgi bilan",
+    "actions": {
+      "signingIn": "Kirish...",
+      "createAccount": "Hisob yaratish",
+      "creatingAccount": "Hisob yaratilmoqda...",
+      "sendingResetLink": "Yuborilmoqda...",
+      "sendResetLink": "Tiklash havolasini yuborish"
+    },
+    "messages": {
+      "loginSuccess": "Xush kelibsiz!",
+      "registerSuccess": "Hisob muvaffaqiyatli yaratildi!",
+      "resetLinkSent": "Parolni tiklash havolasi yuborildi!",
+      "error": "Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.",
+      "googleLogin": "Google orqali kirish bosildi"
+    }
+  }
+}
