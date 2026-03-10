@@ -1,7 +1,17 @@
+import { fileURLToPath } from 'url'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
+
+  css: ["@/assets/css/main.css"],
+
+  alias: {
+    "#constants": fileURLToPath(new URL("./app/utils/constants", import.meta.url)),
+    "#validation": fileURLToPath(new URL("./app/utils/validation", import.meta.url)),
+    "#types": fileURLToPath(new URL("./app/types", import.meta.url)),
+  },
 
   modules: [
     "@pinia/nuxt",
@@ -13,7 +23,7 @@ export default defineNuxtConfig({
   ],
 
   i18n: {
-    langDir: "locales",
+    langDir: "../i18n/locales",
     locales: [
       { code: "en", name: "English", file: "en.json" },
       { code: "uz", name: "Uzbek", file: "uz.json" },
@@ -23,10 +33,10 @@ export default defineNuxtConfig({
     strategy: "prefix_except_default",
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'i18n_redirected',
+      cookieKey: "i18n_redirected",
       alwaysRedirect: true,
-      fallbackLocale: 'en'
-    }
+      fallbackLocale: "en",
+    },
   },
 
   imports: {

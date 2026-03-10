@@ -1,6 +1,6 @@
 import { toTypedSchema } from "@vee-validate/yup";
 import * as yup from "yup";
-import { AUTH_VALIDATION } from "./constants";
+import { AUTH_VALIDATION } from "#constants/auth";
 
 // ─── Factory functions for creating validation schemas with i18n ────────────────
 

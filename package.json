@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@ant-design-vue/nuxt": "^1.4.6",
-    "@tailwindcss/postcss": "^4.2.1"
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/node": "^25.3.5"
   }
 }

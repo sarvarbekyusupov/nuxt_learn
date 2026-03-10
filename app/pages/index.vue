@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ROUTES } from '@/utils/routes'
+import { ROUTES } from '#constants/routes'
 
 definePageMeta({
-  layout: false,
+  layout: 'default',
 })
 
 const { t } = useI18n()
@@ -10,100 +10,44 @@ const localePath = useLocalePath()
 </script>
 
 <template>
-  <div class="page">
-    <div class="language-pos">
-      <LanguageSwitcher />
+  <div class="text-center">
+    <div class="inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-slate-100 text-slate-900 mb-8 animate-bounce">
+      <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
     </div>
-    <div class="card">
-      <h1 class="title">{{ t('common.welcome') }}</h1>
-      <p class="subtitle">{{ t('common.welcomeSubtitle') }}</p>
+    
+    <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6 lg:leading-[1.15]">
+      {{ t('common.welcome') }}
+    </h1>
+    
+    <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-12 font-medium">
+      {{ t('common.welcomeSubtitle') }}
+    </p>
 
-      <div class="actions">
-        <router-link :to="localePath(ROUTES.LOGIN)" class="btn-primary">{{ t('auth.signIn') }}</router-link>
-        <router-link :to="localePath(ROUTES.REGISTER)" class="btn-ghost">{{ t('auth.signUp') }}</router-link>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <NuxtLink 
+        :to="localePath(ROUTES.REGISTER)" 
+        class="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-2xl text-[1.05rem] font-bold shadow-xl shadow-slate-900/10 hover:bg-slate-800 hover:scale-[1.02] active:scale-[0.98] transition-all"
+      >
+        {{ t('auth.actions.createAccount') || 'Get Started' }}
+      </NuxtLink>
+      
+      <NuxtLink 
+        :to="localePath(ROUTES.LOGIN)" 
+        class="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-2xl text-[1.05rem] font-bold hover:bg-slate-50 hover:border-slate-300 transition-all"
+      >
+        {{ t('auth.signIn') }}
+      </NuxtLink>
+    </div>
+
+    <!-- Feature Section -->
+    <div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div v-for="i in 3" :key="i" class="p-8 bg-white border border-slate-200/60 rounded-3xl shadow-sm text-left">
+        <div class="h-10 w-10 bg-slate-100 rounded-xl mb-6" />
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Modern Nuxt 4</h3>
+        <p class="text-slate-500 text-sm leading-relaxed">Built with the latest standards and best practices for performance and scalability.</p>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
-
-.page {
-  min-height: 100vh;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'DM Sans', sans-serif;
-  padding: 1.5rem;
-  position: relative;
-}
-
-.language-pos {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-}
-
-.card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 2.25rem 2rem;
-  width: 100%;
-  max-width: 380px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.05);
-  animation: up 0.4s ease both;
-}
-
-.title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #111;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 0.875rem;
-  color: #999;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.btn-primary,
-.btn-ghost {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  padding: 0.65rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background 0.15s, border-color 0.15s;
-}
-
-.btn-primary {
-  background: #111;
-  color: #fff;
-}
-.btn-primary:hover { background: #333; }
-
-.btn-ghost {
-  background: #fff;
-  color: #333;
-  border: 1px solid #e5e7eb;
-}
-.btn-ghost:hover { background: #f9f9f9; border-color: #d1d5db; }
-
-@keyframes up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-</style>

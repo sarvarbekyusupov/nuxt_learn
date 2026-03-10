@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ROUTES } from '@/utils/routes'
+import { ROUTES } from '#constants/routes'
 
 definePageMeta({
   layout: false,
