@@ -2,7 +2,6 @@
 import { ROUTES } from '#constants/routes'
 
 const { t } = useI18n()
-const localePath = useLocalePath()
 
 const navigation = [
   { name: 'common.welcome', href: ROUTES.HOME },
@@ -18,42 +17,42 @@ const navigation = [
         <div class="flex h-16 items-center justify-between gap-4">
           <!-- Logo & Brand -->
           <div class="flex items-center gap-8">
-            <NuxtLink :to="localePath(ROUTES.HOME)" class="flex items-center gap-2.5 no-underline group">
+            <NuxtLinkLocale :to="ROUTES.HOME" class="flex items-center gap-2.5 no-underline group">
               <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 text-white shadow-lg shadow-slate-900/10 group-hover:scale-105 transition-transform">
                 <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
               </div>
               <span class="text-lg font-bold tracking-tight text-slate-900">NuxtApp</span>
-            </NuxtLink>
+            </NuxtLinkLocale>
 
             <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center gap-1">
-              <NuxtLink
+              <NuxtLinkLocale
                 v-for="item in navigation"
                 :key="item.name"
-                :to="localePath(item.href)"
+                :to="item.href"
                 class="px-4 py-2 text-[0.925rem] font-medium text-slate-600 rounded-lg hover:text-slate-900 hover:bg-slate-100/80 transition-all"
                 active-class="text-slate-900 bg-slate-100"
               >
                 {{ t(item.name) }}
-              </NuxtLink>
+              </NuxtLinkLocale>
             </nav>
           </div>
 
           <!-- Actions -->
           <div class="flex items-center gap-3">
             <div class="mr-2">
-              <LanguageSwitcher />
+              <CommonLanguageSwitcher />
             </div>
             
             <div class="hidden sm:flex items-center gap-2">
-              <NuxtLink :to="localePath(ROUTES.LOGIN)" class="px-4 py-2 text-[0.9rem] font-semibold text-slate-700 hover:text-slate-900 transition-colors">
+              <NuxtLinkLocale :to="ROUTES.LOGIN" class="px-4 py-2 text-[0.9rem] font-semibold text-slate-700 hover:text-slate-900 transition-colors">
                 {{ t('auth.signIn') }}
-              </NuxtLink>
-              <NuxtLink :to="localePath(ROUTES.REGISTER)" class="px-5 py-2 text-[0.9rem] font-semibold bg-slate-900 text-white rounded-xl shadow-md shadow-slate-900/10 hover:bg-slate-800 transition-all active:scale-[0.98]">
+              </NuxtLinkLocale>
+              <NuxtLinkLocale :to="ROUTES.REGISTER" class="px-5 py-2 text-[0.9rem] font-semibold bg-slate-900 text-white rounded-xl shadow-md shadow-slate-900/10 hover:bg-slate-800 transition-all active:scale-[0.98]">
                 {{ t('auth.signUp') }}
-              </NuxtLink>
+              </NuxtLinkLocale>
             </div>
           </div>
         </div>

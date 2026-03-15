@@ -16,7 +16,9 @@
     "brand": "DanAds",
     "tagline": "Start your journey with us",
     "signIn": "Sign in",
+    "signInSubtitle": "Please enter your details to sign in.",
     "signUp": "Create account",
+    "signUpSubtitle": "Create an account to get started.",
     "forgotPassword": "Reset password",
     "forgotPasswordSubtitle": "Enter your email and we'll send you a reset link.",
     "rememberMe": "Remember me",
@@ -79,5 +81,16 @@
       "error": "Something went wrong. Please try again.",
       "googleLogin": "Google login clicked"
     }
+  },
+  "products": {
+    "browse": "Browse Products",
+    "catalog": "Our Catalog",
+    "viewDetails": "View Details",
+    "loading": "Loading products...",
+    "backToCatalog": "Back to Catalog",
+    "addToCart": "Add to Cart",
+    "notFound": "Product Not Found",
+    "returnToCatalog": "Return to Catalog",
+    "wishlistSyncError": "Could not sync wishlist with server."
   }
 }

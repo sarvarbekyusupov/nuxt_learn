@@ -16,7 +16,9 @@
     "brand": "DanAds",
     "tagline": "Biz bilan sayohatingizni boshlang",
     "signIn": "Tizimga kirish",
+    "signInSubtitle": "Kirish uchun ma'lumotlaringizni kiriting.",
     "signUp": "Hisob yaratish",
+    "signUpSubtitle": "Boshlash uchun hisob yarating.",
     "forgotPassword": "Parolni tiklash",
     "forgotPasswordSubtitle": "E-mail manzilingizni kiriting va biz sizga tiklash havolasini yuboramiz.",
     "rememberMe": "Meni eslab qol",
@@ -79,5 +81,16 @@
       "error": "Xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring.",
       "googleLogin": "Google orqali kirish bosildi"
     }
+  },
+  "products": {
+    "browse": "Mahsulotlarni ko'rish",
+    "catalog": "Bizning katalog",
+    "viewDetails": "Batafsil",
+    "loading": "Mahsulotlar yuklanmoqda...",
+    "backToCatalog": "Katalogga qaytish",
+    "addToCart": "Savatga qo'shish",
+    "notFound": "Mahsulot topilmadi",
+    "returnToCatalog": "Katalogga qaytish",
+    "wishlistSyncError": "Saralanganlar ro'yxatini server bilan sinxronlash imkoni bo'lmadi."
   }
 }

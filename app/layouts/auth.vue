@@ -10,7 +10,7 @@
 
     <!-- Language switcher -->
     <div class="lang-switcher">
-      <LanguageSwitcher />
+      <CommonLanguageSwitcher />
     </div>
 
     <!-- Card -->
