@@ -4,6 +4,6 @@
       <NuxtRouteAnnouncer />
       <NuxtPage />
     </NuxtLayout>
-    <UNotifications />
+    <UToaster />
   </div>
 </template>

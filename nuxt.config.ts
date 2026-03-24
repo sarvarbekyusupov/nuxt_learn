@@ -13,6 +13,13 @@ export default defineNuxtConfig({
     "#types": fileURLToPath(new URL("./app/types", import.meta.url)),
   },
 
+  runtimeConfig: {
+    apiSecret: "", // Can be overridden by NUXT_API_SECRET
+    public: {
+      externalApiUrl: "", // Can be overridden by NUXT_PUBLIC_EXTERNAL_API_URL
+    },
+  },
+
   modules: [
     "@pinia/nuxt",
     "@nuxt/devtools",

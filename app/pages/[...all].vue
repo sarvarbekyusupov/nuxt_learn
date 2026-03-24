@@ -12,7 +12,7 @@ const localePath = useLocalePath()
 <template>
   <div class="page">
     <div class="language-pos">
-      <LanguageSwitcher />
+      <CommonLanguageSwitcher />
     </div>
     <div class="card">
       <span class="eyebrow">404</span>
