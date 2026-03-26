@@ -47,12 +47,31 @@ export const createRegisterSchema = (t: (key: string) => string) =>
   toTypedSchema(
     yup.object({
       name: createNameSchema(t),
+      family_name: yup
+        .string()
+        .required(t("auth.validation.familyName.required"))
+        .min(2, t("auth.validation.familyName.tooShort"))
+        .max(100, t("auth.validation.familyName.tooLong")),
       email: createEmailSchema(t),
       password: createPasswordSchema(t),
       confirmPassword: yup
         .string()
         .required(t("auth.validation.confirmPassword.required"))
         .oneOf([yup.ref("password")], t("auth.validation.confirmPassword.noMatch")),
+      birthdate: yup
+        .string()
+        .required(t("auth.validation.birthdate.required")),
+      gender: yup
+        .string()
+        .required(t("auth.validation.gender.required")),
+      picture: yup
+        .string()
+        .required(t("auth.validation.picture.required"))
+        .url(t("auth.validation.picture.invalidUrl")),
+      phone_number: yup
+        .string()
+        .required(t("auth.validation.phone.required"))
+        .matches(/^\+[1-9]\d{1,14}$/, t("auth.validation.phone.invalid")),
     })
   );
 

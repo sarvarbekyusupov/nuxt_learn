@@ -5,6 +5,8 @@
     "submit": "Отправить",
     "welcome": "Добро пожаловать",
     "welcomeSubtitle": "Войдите в свой аккаунт или создайте новый",
+    "allRightsReserved": "Все права защищены.",
+    "back": "Назад",
     "error404": {
       "title": "Страница не найдена",
       "subtitle": "Страница, которую вы ищете, не существует или была перемещена.",
@@ -19,8 +21,12 @@
     "signInSubtitle": "Пожалуйста, введите свои данные для входа.",
     "signUp": "Создать аккаунт",
     "signUpSubtitle": "Создайте аккаунт, чтобы начать.",
+    "confirmAccount": "Подтвердите аккаунт",
+    "confirmSubtitle": "Пожалуйста, введите код, отправленный на вашу почту.",
     "forgotPassword": "Сбросить пароль",
-    "forgotPasswordSubtitle": "Введите ваш email, и мы отправим вам ссылку для сброса.",
+    "forgotPasswordSubtitle": "Введите ваш email, и мы отправим вам код для сброса.",
+    "setNewPassword": "Установить новый пароль",
+    "enterResetCode": "Введите код из письма и ваш новый пароль.",
     "rememberMe": "Запомнить меня",
     "forgotPasswordLink": "Забыли?",
     "continueWithGoogle": "Продолжить с Google",
@@ -35,10 +41,18 @@
       "emailPlaceholder": "вы{'@'}example.com",
       "password": "Пароль",
       "passwordPlaceholder": "••••••••",
-      "fullName": "Полное имя",
-      "fullNamePlaceholder": "Иван Иванов",
+      "newPassword": "Новый пароль",
+      "fullName": "Имя",
+      "fullNamePlaceholder": "Иван",
+      "familyName": "Фамилия",
+      "familyNamePlaceholder": "Иванов",
       "confirmPassword": "Подтвердите пароль",
-      "confirmPasswordPlaceholder": "••••••••"
+      "confirmPasswordPlaceholder": "••••••••",
+      "birthdate": "Дата рождения",
+      "gender": "Пол",
+      "picture": "URL аватара",
+      "phone": "Номер телефона",
+      "confirmationCode": "Код подтверждения"
     },
     "validation": {
       "email": {
@@ -61,9 +75,31 @@
         "tooLong": "Имя не может превышать 100 символов",
         "invalidChars": "Имя может содержать только буквы, пробелы, дефисы и апострофы"
       },
+      "familyName": {
+        "required": "Фамилия обязательна",
+        "tooShort": "Фамилия должна содержать минимум 2 символа",
+        "tooLong": "Фамилия не может превышать 100 символов"
+      },
       "confirmPassword": {
         "required": "Пожалуйста, подтвердите ваш пароль",
         "noMatch": "Пароли не совпадают"
+      },
+      "confirmationCode": {
+        "required": "Код подтверждения обязателен"
+      },
+      "birthdate": {
+        "required": "Дата рождения обязательна"
+      },
+      "gender": {
+        "required": "Пол обязателен"
+      },
+      "picture": {
+        "required": "URL аватара обязателен",
+        "invalidUrl": "Пожалуйста, введите корректный URL"
+      },
+      "phone": {
+        "required": "Номер телефона обязателен",
+        "invalid": "Неверный формат номера (например, +1234567890)"
       }
     },
     "passwordHint": "Минимум 8 символов, с заглавной и строчной буквами, цифрой и специальным символом",
@@ -71,15 +107,23 @@
       "signingIn": "Вход...",
       "createAccount": "Создать аккаунт",
       "creatingAccount": "Создание аккаунта...",
+      "confirm": "Подтвердить",
+      "confirming": "Подтверждение...",
       "sendingResetLink": "Отправка...",
-      "sendResetLink": "Отправить ссылку для сброса"
+      "sendResetLink": "Отправить код",
+      "resetPassword": "Сбросить пароль",
+      "signOut": "Выйти"
     },
     "messages": {
       "loginSuccess": "С возвращением!",
       "registerSuccess": "Аккаунт успешно создан!",
-      "resetLinkSent": "Ссылка для сброса пароля отправлена!",
+      "resetLinkSent": "Код для сброса пароля отправлен!",
+      "passwordResetSuccess": "Пароль успешно изменен! Теперь вы можете войти.",
       "error": "Что-то пошло не так. Пожалуйста, попробуйте снова.",
-      "googleLogin": "Вход через Google нажат"
+      "googleLogin": "Вход через Google",
+      "confirmCodeSent": "Код подтверждения отправлен на вашу почту.",
+      "confirmSuccess": "Аккаунт подтвержден! Теперь вы можете войти.",
+      "confirmSignUpRequired": "Пожалуйста, подтвердите регистрацию."
     }
   },
   "products": {

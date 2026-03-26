@@ -17,6 +17,15 @@ export default defineNuxtConfig({
     apiSecret: "", // Can be overridden by NUXT_API_SECRET
     public: {
       externalApiUrl: "", // Can be overridden by NUXT_PUBLIC_EXTERNAL_API_URL
+      cognito: {
+        authority: "https://cognito-idp.eu-north-1.amazonaws.com/eu-north-1_V8ZgFNwsi",
+        region: "eu-north-1",
+        userPoolId: "eu-north-1_V8ZgFNwsi",
+        clientId: "223odc5gh18q8s0kflnt5emju5",
+        redirectUri: "https://d84l1y8p4kdic.cloudfront.net",
+        domain: "https://eu-north-1v8zgfnwsi.auth.eu-north-1.amazoncognito.com",
+        logoutUri: "https://d84l1y8p4kdic.cloudfront.net",
+      },
     },
   },
 
@@ -53,5 +62,11 @@ export default defineNuxtConfig({
         imports: ["useForm", "useField", "defineField"],
       },
     ],
+  },
+
+  vite: {
+    define: {
+      "window.global": {},
+    },
   },
 });

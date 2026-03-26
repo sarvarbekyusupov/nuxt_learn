@@ -1,9 +1,17 @@
-export default defineNuxtRouteMiddleware((to) => {
-  const authToken = useCookie("auth_token");
+import { useCognito } from '~/composables/useCognito'
 
-  // If the path starts with /admin and the auth_token cookie is missing, redirect to login
-  if (!authToken.value && to.path.startsWith("/admin")) {
-    const localePath = useLocalePath();
+export default defineNuxtRouteMiddleware(async (to) => {
+  const { user, fetchUser } = useCognito()
+  const localePath = useLocalePath()
+
+  if (!user.value && import.meta.client) {
+    await fetchUser()
+  }
+
+  // If the path starts with /admin and the user is not logged in, redirect to login
+  if (!user.value && to.path.includes("/admin")) {
     return navigateTo(localePath("/login"));
   }
+
+  // Add more specific admin checks here if needed (e.g. Cognito groups)
 });

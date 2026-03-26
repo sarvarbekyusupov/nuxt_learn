@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { ROUTES } from '#constants/routes'
+import { useCognito } from '@/composables/useCognito'
 
 const { t } = useI18n()
+const { user, logout } = useCognito()
 
 const navigation = [
   { name: 'common.welcome', href: ROUTES.HOME },
   // Add more links as your app grows
 ]
+
+async function handleLogout() {
+  await logout()
+}
 </script>
 
 <template>
@@ -46,7 +52,19 @@ const navigation = [
               <CommonLanguageSwitcher />
             </div>
             
-            <div class="hidden sm:flex items-center gap-2">
+            <div v-if="user" class="flex items-center gap-4">
+              <span class="hidden sm:inline-block text-[0.9rem] font-medium text-slate-600">
+                {{ user.attributes?.email }}
+              </span>
+              <button 
+                class="px-4 py-2 text-[0.9rem] font-semibold text-slate-700 hover:text-slate-900 transition-colors border border-slate-200 rounded-xl hover:bg-slate-50"
+                @click="handleLogout"
+              >
+                {{ t('auth.actions.signOut') || 'Sign Out' }}
+              </button>
+            </div>
+            
+            <div v-else class="hidden sm:flex items-center gap-2">
               <NuxtLinkLocale :to="ROUTES.LOGIN" class="px-4 py-2 text-[0.9rem] font-semibold text-slate-700 hover:text-slate-900 transition-colors">
                 {{ t('auth.signIn') }}
               </NuxtLinkLocale>

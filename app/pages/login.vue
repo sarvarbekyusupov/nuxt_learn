@@ -1,84 +1,173 @@
 <script setup lang="ts">
-import { Field } from 'vee-validate'
+import { Field, useForm } from 'vee-validate'
 import { ROUTES } from '#constants/routes'
-import { useAuthForm } from '@/composables/useAuthForm'
+import { createLoginSchema } from '#validation/auth'
+import { useCognito } from '@/composables/useCognito'
+import { message } from 'ant-design-vue'
 
 definePageMeta({
   layout: 'auth',
 })
 
-const { onSubmit, isSubmitting, t, localePath } = useAuthForm('login')
+const { t } = useI18n()
+const localePath = useLocalePath()
+const { login: cognitoLogin, user } = useCognito()
 
 const rememberMe = ref(false)
+const isSubmitting = ref(false)
 
-async function handleGoogleLogin() {
-  const { t } = useI18n()
-  const { message } = await import('ant-design-vue')
-  message.info(t('auth.messages.googleLogin'))
-}
+const form = useForm({
+  validationSchema: createLoginSchema(t),
+  initialValues: {
+    email: '',
+    password: ''
+  }
+})
+
+const onSubmit = form.handleSubmit(async (values) => {
+  isSubmitting.value = true
+  try {
+    const { isSignedIn, nextStep } = await cognitoLogin({
+      username: values.email,
+      password: values.password
+    })
+
+    if (isSignedIn) {
+      message.success(t('auth.messages.loginSuccess'))
+      return navigateTo(localePath(ROUTES.HOME))
+    }
+    
+    if (nextStep?.signInStep === 'CONFIRM_SIGN_UP') {
+      message.info(t('auth.messages.confirmSignUpRequired') || 'Please confirm your sign up.')
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : t('auth.messages.error');
+    message.error(errorMessage)
+  } finally {
+    isSubmitting.value = false
+  }
+})
+
+onMounted(() => {
+  if (user.value) {
+    navigateTo(localePath(ROUTES.HOME))
+  }
+})
 </script>
 
 <template>
-  <div>
-    <h1 class="text-3xl font-bold text-slate-900 tracking-tight mb-2">{{ t('auth.signIn') }}</h1>
-    <p class="text-[0.95rem] text-slate-500 leading-relaxed mb-8">{{ t('auth.signInSubtitle') || 'Please enter your details to sign in.' }}</p>
+  <div class="animate-in fade-in slide-in-from-bottom-4 duration-1000 w-full max-w-sm mx-auto">
+    <div class="mb-10">
+      <h1 class="text-4xl font-black text-slate-900 tracking-tight mb-3">
+        {{ t('auth.signIn') }}
+      </h1>
+      <p class="text-[1.05rem] text-slate-500 font-medium leading-relaxed">
+        {{ t('auth.signInSubtitle') || 'Welcome back! Please enter your details.' }}
+      </p>
+    </div>
 
-    <form @submit="onSubmit">
+    <form class="space-y-6" @submit="onSubmit">
       <!-- Email Field -->
-      <div class="mb-4.5">
-        <label class="block text-[0.875rem] font-semibold text-slate-700 mb-1.5">{{ t('auth.fields.email') }}</label>
-        <Field v-slot="{ field, errorMessage }" name="email">
-          <a-input v-bind="field" :placeholder="t('auth.fields.emailPlaceholder')" size="large" />
-          <div v-if="errorMessage" class="text-red-500 text-[0.8rem] mt-1.5 font-medium">{{ errorMessage }}</div>
+      <div class="space-y-2">
+        <label class="block text-[0.85rem] font-bold text-slate-700 uppercase tracking-wider ml-1">
+          {{ t('auth.fields.email') }}
+        </label>
+        <Field v-slot="{ value, handleChange, handleBlur, errorMessage }" name="email">
+          <a-input 
+            :value="value"
+            :placeholder="t('auth.fields.emailPlaceholder')" 
+            size="large" 
+            class="rounded-2xl! bg-slate-50! border-slate-200! hover:border-slate-400! focus:border-slate-900! focus:ring-4! focus:ring-slate-900/5! transition-all! h-12! px-4! text-[0.95rem]!" 
+            @update:value="handleChange"
+            @blur="handleBlur"
+          />
+          <div v-if="errorMessage" class="text-red-500 text-[0.8rem] mt-1.5 font-semibold flex items-center gap-1 ml-1 animate-in fade-in slide-in-from-top-1">
+            <span class="inline-block w-1 h-1 rounded-full bg-red-500" /> {{ errorMessage }}
+          </div>
         </Field>
       </div>
 
       <!-- Password Field -->
-      <div class="mb-4.5">
-        <div class="flex justify-between items-center w-full mb-1.5">
-          <label class="block text-[0.875rem] font-semibold text-slate-700">{{ t('auth.fields.password') }}</label>
-          <NuxtLink :to="localePath(ROUTES.FORGOT_PASSWORD)" class="text-[0.85rem] font-medium text-slate-500 hover:text-slate-900 transition-colors">{{ t('auth.forgotPasswordLink') }}</NuxtLink>
+      <div class="space-y-2">
+        <div class="flex justify-between items-center w-full px-1">
+          <label class="block text-[0.85rem] font-bold text-slate-700 uppercase tracking-wider">
+            {{ t('auth.fields.password') }}
+          </label>
+          <NuxtLink :to="localePath(ROUTES.FORGOT_PASSWORD)" class="text-[0.85rem] font-bold text-slate-500 hover:text-slate-900 transition-colors">
+            {{ t('auth.forgotPasswordLink') }}
+          </NuxtLink>
         </div>
-        <Field v-slot="{ field, errorMessage }" name="password">
-          <a-input-password v-bind="field" :placeholder="t('auth.fields.passwordPlaceholder')" size="large" />
-          <div v-if="errorMessage" class="text-red-500 text-[0.8rem] mt-1.5 font-medium">{{ errorMessage }}</div>
+        <Field v-slot="{ value, handleChange, handleBlur, errorMessage }" name="password">
+          <a-input-password 
+            :value="value"
+            :placeholder="t('auth.fields.passwordPlaceholder')" 
+            size="large" 
+            class="rounded-2xl! bg-slate-50! border-slate-200! hover:border-slate-400! focus:border-slate-900! focus:ring-4! focus:ring-slate-900/5! transition-all! h-12! px-4! text-[0.95rem]!" 
+            @update:value="handleChange"
+            @blur="handleBlur"
+          />
+          <div v-if="errorMessage" class="text-red-500 text-[0.8rem] mt-1.5 font-semibold flex items-center gap-1 ml-1 animate-in fade-in slide-in-from-top-1">
+            <span class="inline-block w-1 h-1 rounded-full bg-red-500" /> {{ errorMessage }}
+          </div>
         </Field>
       </div>
 
-      <div class="mt-1 mb-6">
-        <a-checkbox v-model:checked="rememberMe">{{ t('auth.rememberMe') }}</a-checkbox>
+      <div class="flex items-center py-1">
+        <a-checkbox v-model:checked="rememberMe" class="custom-checkbox text-slate-600 font-bold text-[0.9rem]">
+          {{ t('auth.rememberMe') }}
+        </a-checkbox>
       </div>
 
       <button
-        class="w-full py-3 bg-slate-900 text-white rounded-xl text-[0.95rem] font-semibold shadow-md shadow-slate-900/10 hover:bg-slate-800 hover:shadow-lg transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100"
+        class="group relative w-full py-4 bg-slate-900 text-white rounded-2xl text-[1rem] font-bold shadow-xl shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         type="submit"
         :disabled="isSubmitting"
       >
-        {{ isSubmitting ? t('auth.actions.signingIn') : t('auth.signIn') }}
+        <span v-if="isSubmitting" class="inline-block animate-spin mr-2">⟳</span>
+        <span class="relative z-10">{{ isSubmitting ? t('auth.actions.signingIn') : t('auth.signIn') }}</span>
+        <div class="absolute inset-0 rounded-2xl bg-linear-to-r from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity" />
       </button>
     </form>
 
-    <div class="flex items-center gap-4 my-6 text-[0.85rem] font-medium text-slate-400 before:flex-1 before:h-px before:bg-slate-200 after:flex-1 after:h-px after:bg-slate-200">
-      <span>{{ t('common.or') }}</span>
+    <div class="mt-12">
+      <div class="relative flex items-center justify-center">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-slate-200" />
+        </div>
+        <span class="relative px-4 bg-white lg:bg-white text-slate-400 text-[0.8rem] font-bold uppercase tracking-widest">
+          {{ t('auth.noAccount') }}
+        </span>
+      </div>
+      
+      <div class="mt-8 text-center">
+        <NuxtLink :to="localePath(ROUTES.REGISTER)" class="inline-flex items-center justify-center w-full py-4 bg-white border-2 border-slate-100 text-slate-900 rounded-2xl text-[0.95rem] font-bold hover:border-slate-200 hover:bg-slate-50 transition-all duration-300 active:scale-[0.98]">
+          {{ t('auth.signUpLink') }}
+        </NuxtLink>
+      </div>
     </div>
-
-    <button
-      class="w-full flex items-center justify-center gap-3 py-3 bg-white border border-slate-200/80 rounded-xl text-[0.95rem] font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 transition-all active:scale-[0.98]"
-      type="button"
-      @click="handleGoogleLogin"
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
-      {{ t('auth.continueWithGoogle') }}
-    </button>
-
-    <p class="text-center text-[0.9rem] text-slate-500 mt-6 mb-0 font-medium">
-      {{ t('auth.noAccount') }}
-      <NuxtLink :to="localePath(ROUTES.REGISTER)" class="text-slate-900 font-semibold no-underline hover:underline">{{ t('auth.signUpLink') }}</NuxtLink>
-    </p>
   </div>
 </template>
+
+<style scoped>
+/* Custom styling for Ant Design components  */
+:deep(.ant-input-affix-wrapper) {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+:deep(.ant-checkbox-inner) {
+  border-radius: 6px !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-color: #cbd5e1 !important;
+}
+
+:deep(.ant-checkbox-checked .ant-checkbox-inner) {
+  background-color: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+:deep(.ant-checkbox-wrapper:hover .ant-checkbox-inner) {
+  border-color: #0f172a !important;
+}
+</style>

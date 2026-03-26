@@ -2,6 +2,10 @@
 import { MOCK_PRODUCTS } from '~/utils/constants/products'
 import { useWishlistStore } from '~/stores/wishlist'
 
+definePageMeta({
+  middleware: 'auth'
+})
+
 const { t } = useI18n()
 const localePath = useLocalePath()
 const wishlistStore = useWishlistStore()
