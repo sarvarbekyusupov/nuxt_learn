@@ -1,0 +1,142 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "or": "or",
+    "submit": "Submit",
+    "welcome": "Welcome",
+    "welcomeSubtitle": "Sign in to your account or create a new one",
+    "allRightsReserved": "All rights reserved.",
+    "back": "Back",
+    "error404": {
+      "title": "Page not found",
+      "subtitle": "The page you're looking for doesn't exist or has been moved.",
+      "backHome": "Back to Home",
+      "login": "Login"
+    }
+  },
+  "auth": {
+    "brand": "DanAds",
+    "tagline": "Start your journey with us",
+    "signIn": "Sign in",
+    "signInSubtitle": "Please enter your details to sign in.",
+    "signUp": "Create account",
+    "signUpSubtitle": "Create an account to get started.",
+    "confirmAccount": "Confirm Account",
+    "confirmSubtitle": "Please enter the code sent to your email.",
+    "forgotPassword": "Reset password",
+    "forgotPasswordSubtitle": "Enter your email and we'll send you a reset link.",
+    "setNewPassword": "Set New Password",
+    "enterResetCode": "Enter the code sent to your email and your new password.",
+    "rememberMe": "Remember me",
+    "forgotPasswordLink": "Forgot?",
+    "continueWithGoogle": "Continue with Google",
+    "noAccount": "No account?",
+    "signUpLink": "Sign up",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in",
+    "rememberPassword": "Remember your password?",
+    "signInLinkForgot": "Sign in",
+    "fields": {
+      "email": "Email",
+      "emailPlaceholder": "you{'@'}example.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "newPassword": "New Password",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "John Doe",
+      "familyName": "Family name",
+      "familyNamePlaceholder": "Smith",
+      "confirmPassword": "Confirm password",
+      "confirmPasswordPlaceholder": "••••••••",
+      "birthdate": "Birthdate",
+      "gender": "Gender",
+      "picture": "Picture URL",
+      "phone": "Phone Number",
+      "confirmationCode": "Confirmation Code"
+    },
+    "validation": {
+      "email": {
+        "required": "Email is required",
+        "invalid": "Please enter a valid email address",
+        "tooLong": "Email cannot exceed 255 characters",
+        "exists": "This email is already registered"
+      },
+      "password": {
+        "required": "Password is required",
+        "tooShort": "Password must be at least 8 characters",
+        "tooLong": "Password cannot exceed 128 characters",
+        "uppercase": "Must contain at least one uppercase letter",
+        "lowercase": "Must contain at least one lowercase letter",
+        "number": "Must contain at least one number",
+        "special": "Must contain at least one special character"
+      },
+      "name": {
+        "required": "Name is required",
+        "tooShort": "Name must be at least 2 characters",
+        "tooLong": "Name cannot exceed 100 characters",
+        "invalidChars": "Name can only contain letters, spaces, hyphens, and apostrophes"
+      },
+      "familyName": {
+        "required": "Family name is required",
+        "tooShort": "Family name must be at least 2 characters",
+        "tooLong": "Family name cannot exceed 100 characters"
+      },
+      "confirmPassword": {
+        "required": "Please confirm your password",
+        "noMatch": "Passwords do not match"
+      },
+      "confirmationCode": {
+        "required": "Confirmation code is required"
+      },
+      "birthdate": {
+        "required": "Birthdate is required"
+      },
+      "gender": {
+        "required": "Gender is required"
+      },
+      "picture": {
+        "required": "Picture URL is required",
+        "invalidUrl": "Please enter a valid URL"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "invalid": "Invalid phone number format (e.g. +1234567890)"
+      }
+    },
+    "passwordHint": "At least 8 characters, with uppercase, lowercase, number, and special character",
+    "actions": {
+      "signingIn": "Signing in…",
+      "createAccount": "Create account",
+      "creatingAccount": "Creating account…",
+      "confirm": "Confirm",
+      "confirming": "Confirming...",
+      "sendingResetLink": "Sending…",
+      "sendResetLink": "Send reset link",
+      "resetPassword": "Reset Password",
+      "signOut": "Sign Out"
+    },
+    "messages": {
+      "loginSuccess": "Welcome back!",
+      "registerSuccess": "Account created successfully!",
+      "resetLinkSent": "Password reset link sent!",
+      "passwordResetSuccess": "Password reset successfully! Please sign in.",
+      "validationError": "Please check the form for errors.",
+      "error": "Something went wrong. Please try again.",
+      "googleLogin": "Google login clicked",
+      "confirmCodeSent": "Confirmation code sent to your email.",
+      "confirmSuccess": "Account confirmed! You can now sign in.",
+      "confirmSignUpRequired": "Please confirm your sign up."
+    }
+  },
+  "products": {
+    "browse": "Browse Products",
+    "catalog": "Our Catalog",
+    "viewDetails": "View Details",
+    "loading": "Loading products...",
+    "backToCatalog": "Back to Catalog",
+    "addToCart": "Add to Cart",
+    "notFound": "Product Not Found",
+    "returnToCatalog": "Return to Catalog",
+    "wishlistSyncError": "Could not sync wishlist with server."
+  }
+}

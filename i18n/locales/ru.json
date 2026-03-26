@@ -1,0 +1,140 @@
+{
+  "common": {
+    "loading": "Загрузка...",
+    "or": "или",
+    "submit": "Отправить",
+    "welcome": "Добро пожаловать",
+    "welcomeSubtitle": "Войдите в свой аккаунт или создайте новый",
+    "allRightsReserved": "Все права защищены.",
+    "back": "Назад",
+    "error404": {
+      "title": "Страница не найдена",
+      "subtitle": "Страница, которую вы ищете, не существует или была перемещена.",
+      "backHome": "На главную",
+      "login": "Войти"
+    }
+  },
+  "auth": {
+    "brand": "DanAds",
+    "tagline": "Начните свое путешествие с нами",
+    "signIn": "Войти",
+    "signInSubtitle": "Пожалуйста, введите свои данные для входа.",
+    "signUp": "Создать аккаунт",
+    "signUpSubtitle": "Создайте аккаунт, чтобы начать.",
+    "confirmAccount": "Подтвердите аккаунт",
+    "confirmSubtitle": "Пожалуйста, введите код, отправленный на вашу почту.",
+    "forgotPassword": "Сбросить пароль",
+    "forgotPasswordSubtitle": "Введите ваш email, и мы отправим вам код для сброса.",
+    "setNewPassword": "Установить новый пароль",
+    "enterResetCode": "Введите код из письма и ваш новый пароль.",
+    "rememberMe": "Запомнить меня",
+    "forgotPasswordLink": "Забыли?",
+    "continueWithGoogle": "Продолжить с Google",
+    "noAccount": "Нет аккаунта?",
+    "signUpLink": "Зарегистрироваться",
+    "haveAccount": "Уже есть аккаунт?",
+    "signInLink": "Войти",
+    "rememberPassword": "Помните пароль?",
+    "signInLinkForgot": "Войти",
+    "fields": {
+      "email": "Email",
+      "emailPlaceholder": "вы{'@'}example.com",
+      "password": "Пароль",
+      "passwordPlaceholder": "••••••••",
+      "newPassword": "Новый пароль",
+      "fullName": "Имя",
+      "fullNamePlaceholder": "Иван",
+      "familyName": "Фамилия",
+      "familyNamePlaceholder": "Иванов",
+      "confirmPassword": "Подтвердите пароль",
+      "confirmPasswordPlaceholder": "••••••••",
+      "birthdate": "Дата рождения",
+      "gender": "Пол",
+      "picture": "URL аватара",
+      "phone": "Номер телефона",
+      "confirmationCode": "Код подтверждения"
+    },
+    "validation": {
+      "email": {
+        "required": "Email обязателен",
+        "invalid": "Пожалуйста, введите действительный email",
+        "tooLong": "Email не может превышать 255 символов"
+      },
+      "password": {
+        "required": "Пароль обязателен",
+        "tooShort": "Пароль должен содержать минимум 8 символов",
+        "tooLong": "Пароль не может превышать 128 символов",
+        "uppercase": "Должен содержать хотя бы одну заглавную букву",
+        "lowercase": "Должен содержать хотя бы одну строчную букву",
+        "number": "Должен содержать хотя бы одну цифру",
+        "special": "Должен содержать хотя бы один специальный символ"
+      },
+      "name": {
+        "required": "Имя обязательно",
+        "tooShort": "Имя должно содержать минимум 2 символа",
+        "tooLong": "Имя не может превышать 100 символов",
+        "invalidChars": "Имя может содержать только буквы, пробелы, дефисы и апострофы"
+      },
+      "familyName": {
+        "required": "Фамилия обязательна",
+        "tooShort": "Фамилия должна содержать минимум 2 символа",
+        "tooLong": "Фамилия не может превышать 100 символов"
+      },
+      "confirmPassword": {
+        "required": "Пожалуйста, подтвердите ваш пароль",
+        "noMatch": "Пароли не совпадают"
+      },
+      "confirmationCode": {
+        "required": "Код подтверждения обязателен"
+      },
+      "birthdate": {
+        "required": "Дата рождения обязательна"
+      },
+      "gender": {
+        "required": "Пол обязателен"
+      },
+      "picture": {
+        "required": "URL аватара обязателен",
+        "invalidUrl": "Пожалуйста, введите корректный URL"
+      },
+      "phone": {
+        "required": "Номер телефона обязателен",
+        "invalid": "Неверный формат номера (например, +1234567890)"
+      }
+    },
+    "passwordHint": "Минимум 8 символов, с заглавной и строчной буквами, цифрой и специальным символом",
+    "actions": {
+      "signingIn": "Вход...",
+      "createAccount": "Создать аккаунт",
+      "creatingAccount": "Создание аккаунта...",
+      "confirm": "Подтвердить",
+      "confirming": "Подтверждение...",
+      "sendingResetLink": "Отправка...",
+      "sendResetLink": "Отправить код",
+      "resetPassword": "Сбросить пароль",
+      "signOut": "Выйти"
+    },
+    "messages": {
+      "loginSuccess": "С возвращением!",
+      "registerSuccess": "Аккаунт успешно создан!",
+      "resetLinkSent": "Код для сброса пароля отправлен!",
+      "passwordResetSuccess": "Пароль успешно изменен! Теперь вы можете войти.",
+      "error": "Что-то пошло не так. Пожалуйста, попробуйте снова.",
+      "googleLogin": "Вход через Google",
+      "confirmCodeSent": "Код подтверждения отправлен на вашу почту.",
+      "confirmSuccess": "Аккаунт подтвержден! Теперь вы можете войти.",
+      "confirmSignUpRequired": "Пожалуйста, подтвердите регистрацию."
+    }
+  },
+  "products": {
+    "browse": "Просмотреть товары",
+    "catalog": "Наш каталог",
+    "viewDetails": "Подробнее",
+    "loading": "Загрузка товаров...",
+    "backToCatalog": "Назад в каталог",
+    "addToCart": "В корзину",
+    "notFound": "Товар не найден",
+    "returnToCatalog": "Вернуться в каталог",
+    "wishlistSyncError": "Не удалось синхронизировать список избранного с сервером."
+  }
+}
